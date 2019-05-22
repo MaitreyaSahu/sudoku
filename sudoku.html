@@ -21,11 +21,12 @@
             }
 
             function fillGrid() {
-                arr = getRandomArray();
+                //arr = getRandomArray();
                 var x = 0;
                 for (var row = 0; row < 3; row++) {
                     for (var col = 0; col < 3; col++) {
-                        tempArr = arr.slice();
+                        //tempArr = arr.slice();
+                        tempArr = createRandomArray();
                         for (var i = 0; i < 3; i++) {
                             for (var j = 0; j < 3; j++) {
                                 if(x == 14){
