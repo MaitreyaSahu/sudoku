@@ -2,7 +2,7 @@ var grid = [];
 var transGrid = [];
 var num = 1;
 var count = 1;
-var retArr = [1, 0];
+var retArr = [];
 
 function getFirstRow() {
     var i = 0;
@@ -16,9 +16,7 @@ function getFirstRow() {
     } while (j < 9)
 }
 
-function doSomething() {
-    grid = [];
-    transGrid = [];
+function createGrid() {
     for (var i = 0; i < 9; i++) {
         var arr = [];
         for (var j = 0; j < 9; j++) {
@@ -27,42 +25,34 @@ function doSomething() {
         grid.push(arr.slice());
         transGrid.push(arr.slice());
     }
+}
+
+function doSomething() {
+    grid = [];
+    transGrid = [];
+    retArr = [1, 0];
+
+    createGrid();
 
     getFirstRow();
 
     do {
-        count++;
-        if ((count % 5000000) == 0) {
-            console.clear();
-            console.table(grid);
-        }
+
         retArr = solve(retArr[0], retArr[1]);
 
-    } while (retArr[0] != 'x');console.table(grid);
+    } while (retArr[0] != 'x');
+    console.table(grid);
+
     createTable(grid);
 }
 
 function createTable(tableData) {
-    var mainDiv = document.createElement('div');
-    var table = document.createElement('table');
-    var tableBody = document.createElement('tbody');
-
-    tableData.forEach(function(rowData) {
-        var row = document.createElement('tr');
-
-        rowData.forEach(function(cellData) {
-            var cell = document.createElement('td');
-            cell.appendChild(document.createTextNode(cellData));
-            row.appendChild(cell);
+    $("#mainGrid tbody tr").each(function(rowIndex) {
+        var rowData = grid[rowIndex];
+        $(this).find("td").each(function(cellIndex) {
+            $(this).text(rowData[cellIndex]);
         });
-
-        tableBody.appendChild(row);
-    });
-    mainDiv.appendChild(table);
-    mainDiv.setAttribute('class', 'container');
-    table.appendChild(tableBody);
-    table.setAttribute('class', 'table table-bordered');
-    document.body.appendChild(table);
+    })
 }
 
 function isValidInRow(gridVal, gridRow) {
