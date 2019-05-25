@@ -122,7 +122,13 @@ $(document).ready(function() {
     });
 
     $("#mainGrid td").click(function() {
-        selectionOn(this);
+        //selectionOn(this);
+        $('#mainGrid td.selected').removeClass('selected');
+        var index = $(this).index();
+        index++;
+        $(this).addClass('selected');
+        $(this).closest('tr').addClass('selected-row');
+        $("#mainGrid tr td:nth-child(" + index + ")").addClass('selected-row');
     });
 
     $("#nums-table td").click(function() {
@@ -135,7 +141,7 @@ $(document).ready(function() {
 function selectionOn(selectedCell) {
     var index = $(selectedCell).index();
     index++;
-    $(selectedCell).addClass('selected');
+    //$(selectedCell).addClass('selected');
     $(selectedCell).closest('tr').addClass('selected-row');
     $("#mainGrid tr td:nth-child(" + index + ")").addClass('selected-row');
 
@@ -144,7 +150,7 @@ function selectionOn(selectedCell) {
 function selectionRemoved(selectedCell) {
     var index = $(selectedCell).index();
     index++;
-    $(selectedCell).removeClass('selected');
+    //$(selectedCell).removeClass('selected');
     $(selectedCell).closest('tr').removeClass('selected-row');
     $("#mainGrid tr td:nth-child(" + index + ")").removeClass('selected-row');
 
