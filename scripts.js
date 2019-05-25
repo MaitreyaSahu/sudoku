@@ -44,7 +44,7 @@ function autoSolve() {
         var id = $(this).attr('id');
         var i = id.substring(1, 2);
         var j = id.substring(2, 3);
-        $(this).html(grid[i][j]);
+        $(this).html(grid[i][j]).removeClass('error-cell');
     });
 }
 
@@ -154,7 +154,7 @@ $(document).ready(function() {
         id = $(selected).attr('id');
         var i = id.substring(1, 2);
         var j = id.substring(2, 3);
-        grid[i][j] != val ? $(selected).css('color', '#8c061d') : $(selected).css('color', '#49a89d');
+        grid[i][j] != val ? $(selected).addClass('error-cell') : $(selected).removeClass('error-cell');
 
     });
 
