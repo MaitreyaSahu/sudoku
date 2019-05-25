@@ -33,7 +33,7 @@ function startGame() {
 
     $('#mainGrid td').each(function() {
         if (Math.random() > 0.5) {
-            $(this).html('').removeClass('locked-cell filled').addClass('unLocked-cell');
+            $(this).html('').removeClass('locked-cell').addClass('unLocked-cell unfilled');
         }
     });
 
@@ -44,7 +44,7 @@ function autoSolve() {
         var id = $(this).attr('id');
         var i = id.substring(1, 2);
         var j = id.substring(2, 3);
-        $(this).html(grid[i][j]).removeClass('error-cell').addClass('filled');
+        $(this).html(grid[i][j]).removeClass('error-cell').removeClass('unfilled');
 
     });
 
@@ -76,7 +76,7 @@ function createTable(tableData) {
     $("#mainGrid tbody tr").each(function(rowIndex) {
         var rowData = grid[rowIndex];
         $(this).find("td").each(function(cellIndex) {
-            $(this).text(rowData[cellIndex]).addClass('locked-cell').removeClass('unLocked-cell').removeClass('error-cell filled');
+            $(this).text(rowData[cellIndex]).addClass('locked-cell').removeClass('unLocked-cell').removeClass('error-cell').removeClass('unfilled');
             ;
         });
     })
@@ -138,18 +138,15 @@ function solve(posI, posJ) {
 
 $(document).ready(function() {
 
-    $("#mainGrid td").hover(function() {
-        selectionOn(this);
-    }, function() {
-        selectionRemoved(this);
-    });
-
     $("#mainGrid td").click(function() {
         //selectionOn(this);
+        $('.selected-row').removeClass('selected-row');
         $('#mainGrid td.selected').removeClass('selected');
         var index = $(this).index();
         index++;
-        $(this).addClass('selected');
+        if ($(this).hasClass('locked-cell')) {} else {
+            $(this).addClass('selected');
+        }
         $(this).closest('tr').addClass('selected-row');
         $("#mainGrid tr td:nth-child(" + index + ")").addClass('selected-row');
     });
@@ -157,18 +154,20 @@ $(document).ready(function() {
     $("#nums-table td").click(function() {
         var val = $(this).html();
         var selected = $('#mainGrid td.selected').html(val);
-        var id = '';
-        id = $(selected).attr('id');
-        var i = id.substring(1, 2);
-        var j = id.substring(2, 3);
-        //grid[i][j] != val ? $(selected).addClass('error-cell') : $(selected).removeClass('error-cell');
-        if (grid[i][j] != val) {
-            $(selected).addClass('error-cell');
-        } else {
-            $(selected).removeClass('error-cell');
-            if ($('filled').length == 0) {
-                alert('Congratulations, You Won!');
-                startGame();
+        if (selected.length != 0) {
+            var id = '';
+            id = $(selected).attr('id');
+            var i = id.substring(1, 2);
+            var j = id.substring(2, 3);
+            //grid[i][j] != val ? $(selected).addClass('error-cell') : $(selected).removeClass('error-cell');
+            if (grid[i][j] != val) {
+                $(selected).addClass('error-cell');
+            } else {
+                $(selected).removeClass('error-cell').removeClass('unfilled');
+                if ($('.unfilled').length == 0) {
+                    alert('Congratulations, You Won!');
+                    startGame();
+                }
             }
         }
 
