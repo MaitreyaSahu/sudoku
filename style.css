@@ -1,0 +1,41 @@
+body{
+font-size:50px;  
+}
+
+.locked-cell{
+  font-weight:bold;
+}
+
+.error-cell{
+  color:red;
+}
+
+.selected-row, .selected-column{
+  background-color:#ebefc9;
+}
+
+table {
+  border:10px solid;
+  margin: 1em auto;
+  /* width: 100%; */
+  border-collapse: collapse;
+  /* height: 100%; */
+}
+td {
+  height: 80px;
+  width: 80px;
+  border:1px solid;
+  text-align:center;
+}
+
+#mainGrid td:nth-child(3n) {
+  border-right: 5px solid;
+}
+
+tr:nth-child(3n) td {
+  border-bottom: 5px solid;
+}
+
+#nums-table td{
+  border: 10px solid;
+}
