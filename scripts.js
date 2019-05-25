@@ -33,7 +33,7 @@ function startGame() {
 
     $('#mainGrid td').each(function() {
         if (Math.random() > 0.5) {
-            $(this).html('').removeClass('locked-cell').addClass('unLocked-cell');
+            $(this).html('').removeClass('locked-cell filled').addClass('unLocked-cell');
         }
     });
 
@@ -44,8 +44,14 @@ function autoSolve() {
         var id = $(this).attr('id');
         var i = id.substring(1, 2);
         var j = id.substring(2, 3);
-        $(this).html(grid[i][j]).removeClass('error-cell');
+        $(this).html(grid[i][j]).removeClass('error-cell').addClass('filled');
+
     });
+
+}
+
+function getHint() {
+    alert('Coming soon!!!');
 }
 
 function loadGrid() {
@@ -70,7 +76,8 @@ function createTable(tableData) {
     $("#mainGrid tbody tr").each(function(rowIndex) {
         var rowData = grid[rowIndex];
         $(this).find("td").each(function(cellIndex) {
-            $(this).text(rowData[cellIndex]).addClass('locked-cell').removeClass('unLocked-cell').removeClass('error-cell');;
+            $(this).text(rowData[cellIndex]).addClass('locked-cell').removeClass('unLocked-cell').removeClass('error-cell filled');
+            ;
         });
     })
 }
@@ -154,7 +161,16 @@ $(document).ready(function() {
         id = $(selected).attr('id');
         var i = id.substring(1, 2);
         var j = id.substring(2, 3);
-        grid[i][j] != val ? $(selected).addClass('error-cell') : $(selected).removeClass('error-cell');
+        //grid[i][j] != val ? $(selected).addClass('error-cell') : $(selected).removeClass('error-cell');
+        if (grid[i][j] != val) {
+            $(selected).addClass('error-cell');
+        } else {
+            $(selected).removeClass('error-cell');
+            if ($('filled').length == 0) {
+                alert('Congratulations, You Won!');
+                startGame();
+            }
+        }
 
     });
 
