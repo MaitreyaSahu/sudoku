@@ -58,3 +58,7 @@ tr:nth-child(3n) td {
     margin: 5px 50px;
     cursor: pointer;
 }
+
+.container {
+    text-align: center;
+}
