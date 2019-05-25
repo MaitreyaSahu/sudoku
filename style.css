@@ -7,16 +7,16 @@ body {
 }
 
 .unLocked-cell {
-    color: #49a89d;
+    color: #68BB59;
 }
 
 .error-cell {
-    color: #8c061d;
+    color: #d93551;
 }
 
 /*
 .selected {
-    background-color: #5e89a8;
+    background-color: #68BB59;
 }
 */
 .selected-row, .selected-column {
@@ -24,7 +24,7 @@ body {
 }
 
 table {
-    border: 10px solid;
+    border: 10px solid #1E5631;
     margin: 1em auto;
     /* width: 100%; */
     border-collapse: collapse;
@@ -34,36 +34,48 @@ table {
 td {
     height: 80px;
     width: 80px;
-    border: 1px solid #ccc;
+    border: 1px solid #cedac6;
     text-align: center;
+    color: #1E5631;
 }
 
 #mainGrid td:nth-child(3n) {
-    border-right: 5px solid black;
+    border-right: 5px solid #1E5631;
 }
 
 tr:nth-child(3n) td {
-    border-bottom: 5px solid black;
+    border-bottom: 5px solid #1E5631;
 }
 
 #nums-table td {
-    border: 10px solid black;
+    border: 10px solid #1E5631;
 }
 
 .btn {
-    background-color: #a5c47d;
+    background-color: #ACDF87;
     /* Green */
     border: none;
     color: white;
+    border-radius: 10px;
     padding: 10px 65px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 75px;
-    margin: 5px 50px;
+    font-size: 50px;
+    margin: 15px 15px;
     cursor: pointer;
+    height: 80px;
 }
 
 .container {
     text-align: center;
+}
+
+#nums-table td {
+    background-color: #ACDF87;
+    border: 10px solid white;
+    width: 75px;
+    height: 75px;
+    color: white;
+    border-radius: 20px;
 }
