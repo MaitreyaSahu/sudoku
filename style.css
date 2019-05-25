@@ -6,14 +6,19 @@ body {
     font-weight: bold;
 }
 
+.unLocked-cell {
+    color: #49a89d;
+}
+
 .error-cell {
     color: red;
 }
 
+/*
 .selected {
     background-color: #5e89a8;
 }
-
+*/
 .selected-row, .selected-column {
     background-color: #ebefc9;
 }
@@ -29,20 +34,20 @@ table {
 td {
     height: 80px;
     width: 80px;
-    border: 1px solid;
+    border: 1px solid #ccc;
     text-align: center;
 }
 
 #mainGrid td:nth-child(3n) {
-    border-right: 5px solid;
+    border-right: 5px solid black;
 }
 
 tr:nth-child(3n) td {
-    border-bottom: 5px solid;
+    border-bottom: 5px solid black;
 }
 
 #nums-table td {
-    border: 10px solid;
+    border: 10px solid black;
 }
 
 .btn {
