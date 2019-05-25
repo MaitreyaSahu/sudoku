@@ -28,7 +28,11 @@ function createGrid() {
 }
 
 function startGame() {
-    var mode = 20;
+    $('#mainGrid td').each(function() {
+        if (Math.random() > 0.5) {
+            $(this).html('').removeClass('locked-cell');
+        }
+    });
 
 }
 
@@ -54,7 +58,7 @@ function createTable(tableData) {
     $("#mainGrid tbody tr").each(function(rowIndex) {
         var rowData = grid[rowIndex];
         $(this).find("td").each(function(cellIndex) {
-            $(this).text(rowData[cellIndex]);
+            $(this).text(rowData[cellIndex]).addClass('locked-cell');
         });
     })
 }
@@ -132,7 +136,13 @@ $(document).ready(function() {
     });
 
     $("#nums-table td").click(function() {
-        $('#mainGrid td.selected').html($(this).html());
+        var val = $(this).html();
+        var selected = $('#mainGrid td.selected').html(val);
+        var id = '';
+        id = $(selected).attr('id');
+        var i = id.substring(1, 2);
+        var j = id.substring(2, 3);
+        grid[i][j] != val ? $(selected).css('color', '#8c061d') : $(selected).css('color', '');
 
     });
 
