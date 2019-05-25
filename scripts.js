@@ -125,20 +125,27 @@ $(document).ready(function() {
         selectionOn(this);
     });
 
+    $("#nums-table td").click(function() {
+        $('#mainGrid td.selected').html($(this).html());
+
+    });
+
 });
 
 function selectionOn(selectedCell) {
     var index = $(selectedCell).index();
     index++;
-    $(selectedCell).closest('tr').css("background", "#ebefc9");
-    $("#mainGrid tr td:nth-child(" + index + ")").css("background", "#ebefc9");
+    $(selectedCell).addClass('selected');
+    $(selectedCell).closest('tr').addClass('selected-row');
+    $("#mainGrid tr td:nth-child(" + index + ")").addClass('selected-row');
 
 }
 
 function selectionRemoved(selectedCell) {
     var index = $(selectedCell).index();
     index++;
-    $(selectedCell).closest('tr').css("background", "");
-    $("#mainGrid tr td:nth-child(" + index + ")").css("background", "");
+    $(selectedCell).removeClass('selected');
+    $(selectedCell).closest('tr').removeClass('selected-row');
+    $("#mainGrid tr td:nth-child(" + index + ")").removeClass('selected-row');
 
 }
