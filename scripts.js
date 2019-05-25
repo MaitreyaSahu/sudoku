@@ -70,7 +70,7 @@ function createTable(tableData) {
     $("#mainGrid tbody tr").each(function(rowIndex) {
         var rowData = grid[rowIndex];
         $(this).find("td").each(function(cellIndex) {
-            $(this).text(rowData[cellIndex]).addClass('locked-cell').removeClass('unLocked-cell');
+            $(this).text(rowData[cellIndex]).addClass('locked-cell').removeClass('unLocked-cell').removeClass('error-cell');;
         });
     })
 }
