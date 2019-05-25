@@ -165,8 +165,8 @@ $(document).ready(function() {
             } else {
                 $(selected).removeClass('error-cell').removeClass('unfilled');
                 if ($('.unfilled').length == 0) {
-                    alert('Congratulations, You Won!');
-                    startGame();
+                    //alert('Congratulations, You Won!');
+                    //startGame();
                 }
             }
         }
