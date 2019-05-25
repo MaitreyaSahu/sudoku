@@ -46,15 +46,15 @@ tr:nth-child(3n) td {
 }
 
 .btn {
-    background-color: #4CAF50;
+    background-color: #a5c47d;
     /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 65px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 75px;
+    margin: 5px 50px;
     cursor: pointer;
 }
