@@ -28,12 +28,24 @@ function createGrid() {
 }
 
 function startGame() {
+
+    loadGrid();
+
     $('#mainGrid td').each(function() {
         if (Math.random() > 0.5) {
-            $(this).html('').removeClass('locked-cell');
+            $(this).html('').removeClass('locked-cell').addClass('unLocked-cell');
         }
     });
 
+}
+
+function autoSolve() {
+    $('#mainGrid td.unLocked-cell').each(function() {
+        var id = $(this).attr('id');
+        var i = id.substring(1, 2);
+        var j = id.substring(2, 3);
+        $(this).html(grid[i][j]);
+    });
 }
 
 function loadGrid() {
@@ -142,7 +154,7 @@ $(document).ready(function() {
         id = $(selected).attr('id');
         var i = id.substring(1, 2);
         var j = id.substring(2, 3);
-        grid[i][j] != val ? $(selected).css('color', '#8c061d') : $(selected).css('color', '');
+        grid[i][j] != val ? $(selected).css('color', '#8c061d') : $(selected).css('color', '#49a89d');
 
     });
 
