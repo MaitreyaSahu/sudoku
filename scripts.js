@@ -13,7 +13,7 @@ function getFirstRow() {
             grid[i][j] = x;
             transGrid[j++][i] = x;
         }
-    } while (j < 9)
+    } while (j < 4)
 }
 
 function createGrid() {
@@ -57,7 +57,7 @@ function getHint() {
 function loadGrid() {
     grid = [];
     transGrid = [];
-    retArr = [1, 0];
+    retArr = [0, 4];
 
     createGrid();
 
@@ -73,12 +73,22 @@ function loadGrid() {
 }
 
 function createTable(tableData) {
+    //$("#mainGrid tbody tr").each(function(rowIndex) {
+    //    var rowData = grid[rowIndex];
+    //    $(this).find("td").each(function(cellIndex) {
+    //        $(this).text(rowData[cellIndex]).addClass('locked-cell').removeClass('unLocked-cell').removeClass('error-cell').removeClass('unfilled');
+    //        $('.selected-row').removeClass('selected-row');
+    //    });
+    //})
+    var i = 1;
     $("#mainGrid tbody tr").each(function(rowIndex) {
         var rowData = grid[rowIndex];
         $(this).find("td").each(function(cellIndex) {
-            $(this).text(rowData[cellIndex]).addClass('locked-cell').removeClass('unLocked-cell').removeClass('error-cell').removeClass('unfilled');
+            $(this).text(i).addClass('locked-cell').removeClass('unLocked-cell').removeClass('error-cell').removeClass('unfilled');
             $('.selected-row').removeClass('selected-row');
+             i++;
         });
+       
     })
 }
 
